@@ -1,0 +1,21 @@
+.book-card-container {
+  max-width: 16.8rem;
+  padding: 1rem 2rem;
+  text-align: center;
+  box-shadow: 0 2px 3px 0 $bg-02;
+  background-color: $bg-03;
+
+  .book-card-image {
+    border: 1px solid $btn-01;
+  }
+
+  .book-card-title {
+    padding-top: 1rem;
+    font-size: $font-04;
+  }
+
+  .book-card-authors {
+    padding: 0.5rem 0;
+    font-size: $font-05;
+  }
+}
