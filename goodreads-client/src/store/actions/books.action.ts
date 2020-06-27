@@ -1,13 +1,15 @@
 import { createAction } from '@reduxjs/toolkit'
 
-export const TOP_BOOKS_REQUEST = '[Books] Top Request';
-export const TOP_BOOKS_RESPONSE = '[Books] Top Response';
+export const NEWEST_BOOKS_REQUEST = '[Books] Newest Request';
+export const NEWEST_BOOKS_RESPONSE = '[Books] Newest Response';
 export const SEARCH_BOOKS_REQUEST = '[Books] Search Request'
 export const SEARCH_BOOKS_RESPONSE = '[Books] Search Response'
+export const SELECT_GENRE = '[Books] Select Genre'
 
-
-export const topBooksRequest = createAction<null>(TOP_BOOKS_REQUEST);
-export const topBooksResponse = createAction<any>(TOP_BOOKS_RESPONSE);
+export const newestBooksRequest = createAction<string>(NEWEST_BOOKS_REQUEST);
+export const newestBooksResponse = createAction<any>(NEWEST_BOOKS_RESPONSE);
 
 export const searchBooksRequest = createAction<string>(SEARCH_BOOKS_REQUEST);
 export const searchBooksResponse = createAction<any>(SEARCH_BOOKS_RESPONSE);
+
+export const selectGenre = createAction<string>(SELECT_GENRE);

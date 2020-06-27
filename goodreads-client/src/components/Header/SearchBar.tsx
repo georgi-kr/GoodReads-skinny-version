@@ -13,11 +13,11 @@ type SearchBarProps = {
 } & RouteComponentProps;
 
 class SearchBar extends Component<SearchBarProps, {}> {
-  searchBooks = (event: any) => {
+  searchBooksHandler = (event: any) => {
+    event.preventDefault();
     if (!event.target[0].value) {
       return;
     }
-    event.preventDefault();
     this.props.searchBooksRequest(event.target[0].value);
     history.push(PATHS.SEARCH)
   }
@@ -25,7 +25,7 @@ class SearchBar extends Component<SearchBarProps, {}> {
   render() {
     return (
       <div className="search-bar-container">
-        <form className="center" onSubmit={this.searchBooks}>
+        <form className="center-items" onSubmit={this.searchBooksHandler}>
           <input type="text" placeholder={LABELS.SEARCH} className="search" />
           <button type="submit">
             <img src={searchIcon} className="icon" alt="search-icon" />

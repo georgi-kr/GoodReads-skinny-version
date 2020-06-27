@@ -1,0 +1,22 @@
+.filters-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 1rem 3rem;
+  font-size: $font-05;
+
+  .filter-tab {
+    margin: 0.5rem;
+    padding: 1rem 1.8rem;
+    border: 1px solid $bg-02;
+    border-radius: 1.8rem;
+    background-color: $btn-01;
+    cursor: pointer;
+  }
+
+  .active {
+    color: $text-01;
+    border: 1px solid $text-02;
+    background-color: $text-03;
+  }
+}

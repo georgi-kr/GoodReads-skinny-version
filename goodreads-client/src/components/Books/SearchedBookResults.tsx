@@ -14,16 +14,27 @@ type SearchedBookResultsState = BookInfo[];
 class SearchedBookResults extends Component<SearchedBookResultsProps, SearchedBookResultsState> {
 
   render() {
+    if (!this.props.searchBookResultsData) {
+      return (
+        <div className="info-msg center-items">
+          <span>
+            No results for the search.
+          </span>
+        </div>
+      )
+    }
     return (
       <div className="book-list">
         {
           this.props.searchBookResultsData.map((book) => {
+            const { imageLinks, authors, title, publishedDate } = book.volumeInfo;
             return <BookCard
               key={book.id}
-              image={book.volumeInfo.imageLinks.smallThumbnail}
-              authors={book.volumeInfo.authors.join(', ')}
-              title={book.volumeInfo.title}
-              published={book.volumeInfo.publishedDate}
+              id={book.id}
+              image={imageLinks}
+              authors={authors}
+              title={title}
+              published={publishedDate}
             />
           })
         }

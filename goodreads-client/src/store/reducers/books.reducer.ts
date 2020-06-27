@@ -1,47 +1,57 @@
 import { createReducer } from '@reduxjs/toolkit'
 
 import {
-  topBooksRequest,
-  topBooksResponse,
   searchBooksRequest,
-  searchBooksResponse
+  searchBooksResponse,
+  selectGenre,
+  newestBooksRequest,
+  newestBooksResponse
 } from '../actions/books.action';
 import { BookInfo } from '../../models/books/books.response';
 
 export type BooksState = {
-  topBooks: any[],
+  newestBooks: {
+    [key: string]: BookInfo[]
+  }
   searchedBooks: BookInfo[],
+  selectedGenre: string,
   loading: boolean;
   errors: { message: string };
 }
 
 const initialState: BooksState = {
-  topBooks: [],
+  newestBooks: {},
   searchedBooks: [],
+  selectedGenre: '',
   loading: false,
   errors: null
 };
 
 export const booksReducer = createReducer<BooksState>(initialState, builder =>
   builder
-    .addCase(topBooksRequest, (state, action) => {
+    .addCase(newestBooksRequest, (state, action) => {
       return {
         ...state,
         errors: null,
         loading: true,
       };
     })
-    .addCase(topBooksResponse, (state, action) => {
+    .addCase(newestBooksResponse, (state, action) => {
+      const { genre, result, errors } = action.payload;
       return {
         ...state,
         loading: false,
-        topBooks: action.payload.result,
-        errors: action.payload.errors ? action.payload.errors : null,
+        newestBooks: {
+          ...state.newestBooks,
+          [genre] : result
+        },
+        errors: errors ? errors : null,
       };
     })
     .addCase(searchBooksRequest, (state, action) => {
       return {
         ...state,
+        searchedBooks: [],
         errors: null,
         loading: true,
       }
@@ -52,6 +62,12 @@ export const booksReducer = createReducer<BooksState>(initialState, builder =>
         loading: false,
         searchedBooks: action.payload.result,
         errors: action.payload.errors ? action.payload.errors : null,
+      }
+    })
+    .addCase(selectGenre, (state, action) => {
+      return {
+        ...state,
+        selectedGenre: action.payload
       }
     })
 );

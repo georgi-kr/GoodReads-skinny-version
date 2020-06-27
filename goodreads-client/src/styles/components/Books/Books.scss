@@ -1,8 +1,9 @@
 @import './BookCard.scss';
+@import './BookDetails.scss';
 
 .book-list {
   display: grid;
-  grid-template-columns: repeat(6,1fr);
+  grid-template-columns: repeat(6, auto);
   grid-gap: 2rem;
   margin: 2rem 4rem;
 }

@@ -5,18 +5,43 @@ import { ofType } from "redux-observable";
 import { Action } from 'redux-actions'
 
 import { RootState } from "../../reducers/root.reducer";
-import { getTopBooks, searchBook } from '../../../services/books-data.service';
-import { TOP_BOOKS_REQUEST, topBooksResponse, SEARCH_BOOKS_REQUEST, searchBooksResponse } from '../../actions/books.action';
+import { searchBook, getNewestByGenre } from '../../../services/books-data.service';
+import {
+  SEARCH_BOOKS_REQUEST,
+  searchBooksResponse,
+  SELECT_GENRE,
+  newestBooksRequest,
+  NEWEST_BOOKS_REQUEST,
+  newestBooksResponse
+} from '../../actions/books.action';
 
-export const topBooksRequestEpic = (action$: Observable<Action<any>>, store: RootState) =>
+export const selectGenreEpic = (action$: Observable<Action<any>>, store: RootState) =>
   action$.pipe(
-    ofType(TOP_BOOKS_REQUEST),
-    switchMap((action: { payload: any }) => {
-      return getTopBooks().pipe(
+    ofType(SELECT_GENRE),
+    switchMap((action: { payload: string }) => {
+      return of(newestBooksRequest(action.payload))
+    })
+  );
+
+export const newestBooksRequestEpic = (action$: Observable<Action<any>>, store: RootState) =>
+  action$.pipe(
+    ofType(NEWEST_BOOKS_REQUEST),
+    switchMap((action: { payload: string }) => {
+      if ((store as any).value.books.newestBooks[action.payload]) {
+        return of(
+          newestBooksResponse({
+            genre: '',
+            result: [],
+            errors: []
+          })
+        );
+      }
+      return getNewestByGenre(action.payload).pipe(
         map((response: AjaxResponse) => {
-          return topBooksResponse({
-            result: response.response,
-            errors: response.response.error
+          return newestBooksResponse({
+            genre: action.payload,
+            result: response.response.items,
+            errors: response.response.errors
           });
         }),
         catchError((error) =>
@@ -24,10 +49,10 @@ export const topBooksRequestEpic = (action$: Observable<Action<any>>, store: Roo
             error: error ? error : null,
             result: null
           })
-        ),
-      );
+        )
+      )
     })
-  );
+  )
 
 export const searchBookRequestEpic = (action$: Observable<Action<any>>, store: RootState) =>
   action$.pipe(
@@ -51,6 +76,7 @@ export const searchBookRequestEpic = (action$: Observable<Action<any>>, store: R
   );
 
 export default [
-  topBooksRequestEpic,
-  searchBookRequestEpic
+  selectGenreEpic,
+  newestBooksRequestEpic,
+  searchBookRequestEpic,
 ];

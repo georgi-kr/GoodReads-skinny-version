@@ -1,12 +1,19 @@
 .book-card-container {
-  max-width: 16.8rem;
-  padding: 1rem 2rem;
+  max-width: 20.8rem;
+  padding: 1rem 1rem;
   text-align: center;
   box-shadow: 0 2px 3px 0 $bg-02;
   background-color: $bg-03;
+  cursor: pointer;
 
   .book-card-image {
-    border: 1px solid $btn-01;
+    padding: 0 3rem;
+
+    img {
+      max-width: 12.8rem;
+      min-height: 20.8rem;
+      object-fit: contain;
+    }
   }
 
   .book-card-title {

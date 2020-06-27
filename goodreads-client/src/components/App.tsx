@@ -9,6 +9,7 @@ import { PATHS } from '../constants/paths.constant';
 import Landing from './Landing/Landing';
 import Header from './Header/Header';
 import SearchedBookResults from './Books/SearchedBookResults';
+import BookDetails from './Books/BookDetails';
 
 type AppProps = any;
 type AppState = any;
@@ -16,7 +17,7 @@ type AppState = any;
 class App extends Component<AppProps, AppState> {
 
   componentDidMount() {
-
+    
   }
 
   render() {
@@ -26,6 +27,7 @@ class App extends Component<AppProps, AppState> {
         <main>
           <Route exact path={PATHS.HOME} component={Landing} />
           <Route exact path={PATHS.SEARCH} component={SearchedBookResults} />
+          <Route exact path={`${PATHS.DETAILS}/:id`} component={BookDetails}/>
         </main>
       </Router>
     );
