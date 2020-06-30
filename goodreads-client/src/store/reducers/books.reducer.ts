@@ -43,7 +43,7 @@ export const booksReducer = createReducer<BooksState>(initialState, builder =>
         loading: false,
         newestBooks: {
           ...state.newestBooks,
-          [genre] : result
+          [genre]: result
         },
         errors: errors ? errors : null,
       };

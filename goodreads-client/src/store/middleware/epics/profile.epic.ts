@@ -1,6 +1,6 @@
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { AjaxResponse } from 'rxjs/ajax';
-import { of, Observable, merge, concat } from "rxjs";
+import { of, Observable, concat } from "rxjs";
 import { ofType } from "redux-observable";
 import { Action } from 'redux-actions'
 
@@ -123,8 +123,8 @@ export const addToShelfRequestEpic = (action$: Observable<Action<any>>, store: R
             })
           ),
         ))
-        return concat(...actionsArray);
-      })
+      return concat(...actionsArray);
+    })
   )
 
 export const removeFromShelfRequestEpic = (action$: Observable<Action<any>>, store: RootState) =>

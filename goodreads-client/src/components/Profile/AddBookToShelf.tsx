@@ -17,9 +17,6 @@ type AddBookToShelfProps = {
 }
 
 class AddBookToShelf extends Component<AddBookToShelfProps, {}> {
-  constructor(props: AddBookToShelfProps) {
-    super(props)
-  }
 
   _currentShelf: Shelf = null;
   _showCurrent = true;
@@ -30,15 +27,7 @@ class AddBookToShelf extends Component<AddBookToShelfProps, {}> {
       this.findBookOwnShelf();
     }
   }
-
-  componentWillReceiveProps() {
-    if (!this.props.logged || !this.props.bookShelves) {
-      return;
-    }
-    this.viewChanges();
-    this.findBookOwnShelf();
-  }
-
+  
   componentDidUpdate(prevProps: any, prevState: any) {
     if (!this.props.logged || !this.props.bookShelves) {
       return;
@@ -93,6 +82,7 @@ class AddBookToShelf extends Component<AddBookToShelfProps, {}> {
   render() {
     let options = [];
     let inList = false;
+
     for (const key in this.props.bookShelves) {
       if (
         this._currentShelf &&
@@ -112,6 +102,7 @@ class AddBookToShelf extends Component<AddBookToShelfProps, {}> {
         );
       }
     }
+
     if (!inList) {
       options.unshift(
         <button data-type={null} key='-1' className="inactive add">Add to list</button>

@@ -25,27 +25,25 @@ class NewestBooks extends Component<NewestBooksProps, SearchedBookResultsState> 
   }
 
   render() {
-    {
-      if (this.props.isLoading) {
-        return (
-          <div className="info-msg center-items">
-            <span>
-              Loading... Please wait.
+    if (this.props.isLoading) {
+      return (
+        <div className="info-msg center-items">
+          <span>
+            Loading... Please wait.
             </span>
-          </div>
-        )
-      } else if (
-        !this.props.newestBooks[this.props.selectedGenre] ||
-        this.props.newestBooks[this.props.selectedGenre].length === 0
-      ) {
-        return (
-          <div className="info-msg center-items">
-            <span>
-              No books found for the selected Category
+        </div>
+      )
+    } else if (
+      !this.props.newestBooks[this.props.selectedGenre] ||
+      this.props.newestBooks[this.props.selectedGenre].length === 0
+    ) {
+      return (
+        <div className="info-msg center-items">
+          <span>
+            No books found for the selected Category
             </span>
-          </div>
-        )
-      }
+        </div>
+      )
     }
     return (
       <div className="book-list">

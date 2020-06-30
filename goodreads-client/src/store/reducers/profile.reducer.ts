@@ -11,7 +11,6 @@ import {
 } from '../actions/profile.action';
 import { Shelf } from '../../models/profile/shelves.response';
 
-
 export type ProfileState = {
   loading: boolean;
   errors: any[];
