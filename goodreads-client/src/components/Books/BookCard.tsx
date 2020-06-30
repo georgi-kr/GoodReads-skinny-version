@@ -7,27 +7,27 @@ import AddBookToShelf from '../Profile/AddBookToShelf';
 import { BookInfo } from '../../models/books/books.response';
 
 type BooksProps = {
-  id: string,
-  title: string
+  id: string;
+  title: string;
   image: {
-    smallThumbnail: string
+    smallThumbnail: string;
   },
-  authors: string[],
-  published: string
+  authors: string[];
+  published: string;
   volume: BookInfo;
 };
 
 const BookCard = (props: BooksProps) => {
   const getAuthor = () => {
     if (props.authors && props.authors.join(', ')) {
-      return props.authors.join(', ')
+      return props.authors.join(', ');
     } else {
       return '';
     }
   }
 
   const getImage = () => {
-    return props.image ? props.image.smallThumbnail : noImage
+    return props.image ? props.image.smallThumbnail : noImage;
   }
 
   return (

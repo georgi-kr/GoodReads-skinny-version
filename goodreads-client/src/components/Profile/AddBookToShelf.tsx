@@ -25,17 +25,13 @@ class AddBookToShelf extends Component<AddBookToShelfProps, {}> {
   _showCurrent = true;
 
   componentDidMount() {
-    console.log(this.props)
-    if(this.props.bookShelves && this.props.logged) {
+    if (this.props.bookShelves && this.props.logged) {
       this.viewChanges();
       this.findBookOwnShelf();
     }
-
-    }
+  }
 
   componentWillReceiveProps() {
-    console.log(this.props)
-
     if (!this.props.logged || !this.props.bookShelves) {
       return;
     }
@@ -43,12 +39,11 @@ class AddBookToShelf extends Component<AddBookToShelfProps, {}> {
     this.findBookOwnShelf();
   }
 
-  componentDidUpdate(prevProps: any,prevState: any) {
-    console.log(this.props)
+  componentDidUpdate(prevProps: any, prevState: any) {
     if (!this.props.logged || !this.props.bookShelves) {
       return;
     }
-    if ( prevProps !== this.props) {
+    if (prevProps !== this.props) {
       this.findBookOwnShelf();
     }
   }
@@ -60,7 +55,7 @@ class AddBookToShelf extends Component<AddBookToShelfProps, {}> {
         this.props.bookShelves[key].volume.find((element) => {
           return element.id === this.props.volume.id
         })
-        ) {
+      ) {
         this._currentShelf = this.props.bookShelves[key];
         inShelf = true;
       }
@@ -68,7 +63,7 @@ class AddBookToShelf extends Component<AddBookToShelfProps, {}> {
     if (!inShelf) {
       this._currentShelf = null;
     }
-    this.forceUpdate()
+    this.forceUpdate();
   }
 
   selectShelf(event: any) {
@@ -96,22 +91,21 @@ class AddBookToShelf extends Component<AddBookToShelfProps, {}> {
   }
 
   render() {
-    console.log('view updated')
     let options = [];
     let inList = false;
     for (const key in this.props.bookShelves) {
       if (
         this._currentShelf &&
         this.props.bookShelves[key].id === this._currentShelf.id
-        ) {
-          inList = true;
-          if(this._showCurrent) {
-            options.unshift(
-              <button data-type={null} key={key} onClick={this.selectShelf.bind(this)} className="selected">
-                {key}
-              </button>
-            );
-          }
+      ) {
+        inList = true;
+        if (this._showCurrent) {
+          options.unshift(
+            <button data-type={null} key={key} onClick={this.selectShelf.bind(this)} className="selected">
+              {key}
+            </button>
+          );
+        }
       } else {
         options.push(
           <button data-type={key} key={key} onClick={this.selectShelf.bind(this)}>{key}</button>

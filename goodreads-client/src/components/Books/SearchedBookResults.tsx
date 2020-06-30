@@ -6,8 +6,8 @@ import { RootState } from '../../store/reducers/root.reducer';
 import BookCard from './BookCard';
 
 type SearchedBookResultsProps = {
-  searchBookResult: Function,
-  searchBookResultsData: BookInfo[]
+  searchBookResult: Function;
+  searchBookResultsData: BookInfo[];
 };
 type SearchedBookResultsState = BookInfo[];
 

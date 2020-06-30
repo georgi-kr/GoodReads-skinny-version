@@ -9,19 +9,19 @@ type BookDetailsProps = {
 };
 
 type BookDetailsState = {
-  title: string,
+  title: string;
   imageLinks: {
-    smallThumbnail: string,
-    thumbnail: string
-  },
-  authors: string[],
-  publishedDate: string,
-  description: string,
-  categories: string[],
-  averageRating: number,
-  ratingsCount: number,
-  publisher: string,
-  id: string
+    smallThumbnail: string;
+    thumbnail: string;
+  };
+  authors: string[];
+  publishedDate: string;
+  description: string;
+  categories: string[];
+  averageRating: number;
+  ratingsCount: number;
+  publisher: string;
+  id: string;
 };
 
 class BookDetails extends Component<BookDetailsProps, BookDetailsState> {
@@ -49,7 +49,7 @@ class BookDetails extends Component<BookDetailsProps, BookDetailsState> {
 
   getCategories = () => {
     if (this.state.categories && this.state.categories.join(', ')) {
-      return this.state.categories.join(', ')
+      return this.state.categories.join(', ');
     } else {
       return 'unknown';
     }

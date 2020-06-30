@@ -68,7 +68,6 @@ export const profileReducer = createReducer<ProfileState>(initialState, builder 
       }
     })
     .addCase(addToShelfResponse, (state, action) => {
-      console.log('reducer add')
       const { shelf, volume } = action.payload;
       return {
         ...state,
@@ -91,7 +90,6 @@ export const profileReducer = createReducer<ProfileState>(initialState, builder 
       }
     })
     .addCase(removeFromShelfResponse, (state, action) => {
-      console.log('reducer updated remove')
       const shelf = action.payload.shelf.title;
       const index = action.payload.index;
       const volumes = state.bookShelves[shelf].volume;

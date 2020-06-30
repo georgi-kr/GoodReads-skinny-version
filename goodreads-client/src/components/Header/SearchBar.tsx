@@ -9,7 +9,7 @@ import history from '../../shared/history';
 import { PATHS } from '../../constants/paths.constant';
 
 type SearchBarProps = {
-  searchBooksRequest: Function,
+  searchBooksRequest: Function;
 } & RouteComponentProps;
 
 class SearchBar extends Component<SearchBarProps, {}> {
@@ -19,7 +19,7 @@ class SearchBar extends Component<SearchBarProps, {}> {
       return;
     }
     this.props.searchBooksRequest(event.target[0].value);
-    history.push(PATHS.SEARCH)
+    history.push(PATHS.SEARCH);
   }
 
   render() {

@@ -17,7 +17,6 @@ type SearchedBookResultsState = BookInfo[];
 
 class NewestBooks extends Component<NewestBooksProps, SearchedBookResultsState> {
   componentDidMount() {
-    console.log(' from home')
     this.loadInitial();
   }
 
