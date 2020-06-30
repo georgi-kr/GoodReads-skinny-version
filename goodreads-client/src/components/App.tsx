@@ -10,33 +10,32 @@ import Landing from './Landing/Landing';
 import Header from './Header/Header';
 import SearchedBookResults from './Books/SearchedBookResults';
 import BookDetails from './Books/BookDetails';
+import Profile from './Profile/Profile';
 
-type AppProps = any;
+type AppProps = {
+  isLogged: boolean
+};
 type AppState = any;
 
 class App extends Component<AppProps, AppState> {
 
-  componentDidMount() {
-    
-  }
-
   render() {
     return (
       <Router history={history}>
-        <Header />
+        <Header isLogged={this.props.isLogged} />
         <main>
           <Route exact path={PATHS.HOME} component={Landing} />
           <Route exact path={PATHS.SEARCH} component={SearchedBookResults} />
-          <Route exact path={`${PATHS.DETAILS}/:id`} component={BookDetails}/>
+          <Route exact path={PATHS.PROFILE} component={Profile} />
+          <Route exact path={`${PATHS.DETAILS}/:id`} component={BookDetails} />
         </main>
       </Router>
     );
   }
 }
 
-// You get state from dispatched actions
 const mapStateToProps = (state: RootState) => ({
-  //
+  isLogged: state.auth.isLogged
 });
 
 export default connect(

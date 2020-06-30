@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import noImage from '../../assets/icons/noImage.png'
 import { getBookById } from '../../services/books-data.service';
+import AddBookToShelf from '../Profile/AddBookToShelf';
 
 type BookDetailsProps = {
   match: any,
@@ -10,7 +11,7 @@ type BookDetailsProps = {
 type BookDetailsState = {
   title: string,
   imageLinks: {
-    small: string,
+    smallThumbnail: string,
     thumbnail: string
   },
   authors: string[],
@@ -19,7 +20,8 @@ type BookDetailsState = {
   categories: string[],
   averageRating: number,
   ratingsCount: number,
-  publisher: string
+  publisher: string,
+  id: string
 };
 
 class BookDetails extends Component<BookDetailsProps, BookDetailsState> {
@@ -27,8 +29,8 @@ class BookDetails extends Component<BookDetailsProps, BookDetailsState> {
   componentDidMount() {
     const { match: { params } } = this.props;
     getBookById(params.id).subscribe(response => {
-      this.setState({ ...response.response.volumeInfo });
-      console.log(response.response.volumeInfo);
+      const {volumeInfo, id} = response.response;
+      this.setState({ ...volumeInfo, id });
       this.forceUpdate();
     })
   }
@@ -37,7 +39,7 @@ class BookDetails extends Component<BookDetailsProps, BookDetailsState> {
     if (this.state.authors && this.state.authors.join(', ')) {
       return this.state.authors.join(', ')
     } else {
-      return '';
+      return 'unknown';
     }
   }
 
@@ -49,7 +51,7 @@ class BookDetails extends Component<BookDetailsProps, BookDetailsState> {
     if (this.state.categories && this.state.categories.join(', ')) {
       return this.state.categories.join(', ')
     } else {
-      return '';
+      return 'unknown';
     }
   }
 
@@ -68,6 +70,7 @@ class BookDetails extends Component<BookDetailsProps, BookDetailsState> {
             <span className="avg-rating">Rating: {this.state.averageRating || 0}</span>
             <span className="reviews"> Reviews: {this.state.ratingsCount || 0}</span>
           </div>
+          <AddBookToShelf volume={{id: this.state.id,volumeInfo: this.state}}/>
         </div>
         <div className="text-info">
           <div className="field-title">Authors</div>

@@ -4,5 +4,9 @@ export type LoginResponse = {
 }
 
 export type LoginResponseData = {
-  success: boolean; // Or whatever we make it return
+  googleId: string,
+  tokenObj: {
+    access_token: string,
+    token_type: string
+  }
 }

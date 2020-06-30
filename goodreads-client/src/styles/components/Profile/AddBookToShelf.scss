@@ -1,0 +1,31 @@
+.select-container {
+  position: relative;
+  padding:1rem 1rem 0;
+
+  div {
+    width: 100%;
+    font-size: $font-04;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 0;
+    background-color: $text-02;
+    border: none;
+    color: $text-01;
+    transition: color 0.3s ease, background-color 0.3s ease, border-bottom-color 0.3s ease;
+  }
+
+  div:hover,
+  div:focus {
+    color: $text-02;
+    background-color: $text-01;
+    border-bottom-color: $text-01;
+  }
+
+  .inactive {
+    pointer-events: none;
+    cursor: pointer;
+    color: $text-02;
+    background-color: $bg-03;
+  }
+}
+

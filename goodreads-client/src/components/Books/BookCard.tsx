@@ -3,6 +3,8 @@ import React from 'react';
 import noImage from '../../assets/icons/noImage.png'
 import { Link } from 'react-router-dom';
 import { PATHS } from '../../constants/paths.constant';
+import AddBookToShelf from '../Profile/AddBookToShelf';
+import { BookInfo } from '../../models/books/books.response';
 
 type BooksProps = {
   id: string,
@@ -12,6 +14,7 @@ type BooksProps = {
   },
   authors: string[],
   published: string
+  volume: BookInfo;
 };
 
 const BookCard = (props: BooksProps) => {
@@ -37,6 +40,7 @@ const BookCard = (props: BooksProps) => {
         <div className="book-card-authors">{getAuthor()}</div>
         <div className="book-card-date">{props.published}</div>
       </Link>
+      <AddBookToShelf volume={props.volume}/>
     </div>
   );
 }

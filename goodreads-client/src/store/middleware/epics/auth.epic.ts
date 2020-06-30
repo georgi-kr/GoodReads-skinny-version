@@ -4,31 +4,21 @@ import { of, Observable } from "rxjs";
 import { ofType } from "redux-observable";
 import { Action } from 'redux-actions'
 
-import { LOGIN_REQUEST, loginResponse } from "../../actions/auth.action";
-import { LoginRequest } from "../../../models/auth/login.request";
+import { loginResponse, LOGIN_RESPONSE } from "../../actions/auth.action";
 import { RootState } from "../../reducers/root.reducer";
-import { loginServiceRequest } from '../../../services/auth.service';
 import { LoginResponse } from '../../../models/auth/login.response';
+import { shelvesRequest } from '../../actions/profile.action';
 
 
-export const loginRequestEpic = (action$: Observable<Action<LoginRequest>>, store: RootState) =>
+export const loginResponseEpic = (action$: Observable<Action<LoginResponse>>, store: RootState) =>
   action$.pipe(
-    ofType(LOGIN_REQUEST),
-    switchMap((action: { payload : LoginRequest}) => {
-    return loginServiceRequest(action.payload).pipe(
-      map((response: AjaxResponse) => {  
-        return loginResponse(response.response as LoginResponse);
-      }),
-      catchError((error) =>
-        of({
-          error: error ? error : null,
-          result: null
-        })
-      ),
-    );
-  })
-);
+    ofType(LOGIN_RESPONSE),
+    switchMap((action: { payload: any }) => {
+      return of(shelvesRequest());
+    })
+  );
+
 
 export default [
-  loginRequestEpic,
+  loginResponseEpic,
 ];

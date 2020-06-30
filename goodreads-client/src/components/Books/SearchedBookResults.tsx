@@ -29,6 +29,7 @@ class SearchedBookResults extends Component<SearchedBookResultsProps, SearchedBo
           this.props.searchBookResultsData.map((book) => {
             const { imageLinks, authors, title, publishedDate } = book.volumeInfo;
             return <BookCard
+              volume={book}
               key={book.id}
               id={book.id}
               image={imageLinks}
@@ -38,7 +39,6 @@ class SearchedBookResults extends Component<SearchedBookResultsProps, SearchedBo
             />
           })
         }
-        <div></div>
       </div>
     );
   }

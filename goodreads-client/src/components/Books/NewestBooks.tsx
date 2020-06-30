@@ -59,10 +59,10 @@ class NewestBooks extends Component<NewestBooksProps, SearchedBookResultsState> 
               authors={authors}
               title={title}
               published={publishedDate}
+              volume={book}
             />
           })
         }
-        <div></div>
       </div>
     );
   }
