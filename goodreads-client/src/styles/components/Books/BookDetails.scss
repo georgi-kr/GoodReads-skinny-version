@@ -1,0 +1,35 @@
+.book-details-container {
+  margin: 2rem;
+  font-size: $font-04;
+  color: $text-02;
+
+  img {
+    max-width: 30rem;
+    max-height: 60rem;
+  }
+
+  .base-info {
+    margin: 5rem;
+
+    * {
+      margin-bottom: 1rem;
+    }
+
+    .book-details-title {
+      font-size: $font-02;
+    }
+  }
+
+  .text-info {
+    max-width: 50rem;
+
+    * {
+      margin-bottom: 1.5rem;
+    }
+
+    .field-title {
+      margin-bottom: 0.5rem;
+      font-size: $font-05;
+    }
+  }
+}

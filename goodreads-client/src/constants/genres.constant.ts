@@ -1,0 +1,1 @@
+export const GENRES = ['Adventure', 'Comic', 'Crime', 'Docufiction', 'Epistolary', 'Fiction', 'Fantasy', 'Historical', 'Horror', 'Magic', 'realism', 'Mystery', 'Paranoid', 'Philosophical', 'Political', 'Romance', 'Saga', 'Satire', 'Science', 'Speculative', 'Superhero', 'Thriller', 'Urban', 'Western'];

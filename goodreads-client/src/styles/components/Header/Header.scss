@@ -1,0 +1,13 @@
+@import './Logo.scss';
+@import './Navigation.scss';
+@import './Search.scss';
+@import './Login.scss';
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+  padding: 1.5rem;
+  background: $bg-03;
+}

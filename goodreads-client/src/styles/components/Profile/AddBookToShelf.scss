@@ -1,0 +1,42 @@
+.select-container {
+  position: relative;
+  margin-top: 1.5rem;
+  padding: 1rem 1rem 0;
+
+  .select-shelf {
+    button {
+      width: 100%;
+      min-width: 12.8rem;
+      margin-bottom: 0;
+      padding: 0.5rem 0;
+      font-size: $font-05;
+      text-align: center;
+      cursor: pointer;
+      color: $text-02;
+      border: 1px solid $text-01;
+      background-color: transparent;
+      transition: color 0.3s ease, background-color 0.3s ease, border-bottom-color 0.3s ease;
+    }
+    
+    button:hover,
+    button:focus {
+      color: $text-02;
+      background-color: $btn-01;
+    }
+  
+    .inactive, .selected {
+      pointer-events: none;
+      cursor: default;
+      color: $text-02;
+    }
+
+    .selected {
+      border: 1px solid $btn-03;
+    }
+
+    .add {
+      border-bottom: 1px solid $text-02
+    }
+  }
+}
+

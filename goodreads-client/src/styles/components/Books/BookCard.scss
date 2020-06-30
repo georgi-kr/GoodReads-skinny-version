@@ -1,0 +1,31 @@
+.book-card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 20.8rem;
+  padding: 1rem 1rem;
+  text-align: center;
+  box-shadow: 0 2px 3px 0 $bg-02;
+  background-color: $bg-03;
+
+  .book-card-image {
+    padding: 0 3rem;
+
+    img {
+      max-width: 12.8rem;
+      min-height: 20.8rem;
+      object-fit: contain;
+      cursor: pointer;
+    }
+  }
+
+  .book-card-title {
+    padding-top: 1rem;
+    font-size: $font-04;
+  }
+
+  .book-card-authors {
+    padding: 0.5rem 0;
+    font-size: $font-05;
+  }
+}

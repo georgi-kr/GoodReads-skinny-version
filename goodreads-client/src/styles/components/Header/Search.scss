@@ -1,0 +1,12 @@
+.search-bar-container {
+  border-bottom: 1px solid $btn-01;
+
+  .search {
+    height: 4rem;
+    outline: none;
+    border: none;
+    background: transparent;
+    font-size: $font-02;
+    padding-left: 1rem;
+  }
+}

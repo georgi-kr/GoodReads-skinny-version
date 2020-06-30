@@ -1,0 +1,35 @@
+.center-items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center-self {
+  margin: 0 auto;
+}
+
+.icon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.info-msg, .page-title {
+  color: $text-02;
+
+}
+
+.info-msg {
+  font-size: $font-05;
+}
+
+.page-title {
+  display: inline-block;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid $btn-01;
+  font-size: $font-02;
+  text-align: center;
+}
+
+.flex-column {
+  flex-direction: column;
+}
