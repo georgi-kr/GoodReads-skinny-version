@@ -1,10 +1,12 @@
 .book-card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   max-width: 20.8rem;
   padding: 1rem 1rem;
   text-align: center;
   box-shadow: 0 2px 3px 0 $bg-02;
   background-color: $bg-03;
-  cursor: pointer;
 
   .book-card-image {
     padding: 0 3rem;
@@ -13,6 +15,7 @@
       max-width: 12.8rem;
       min-height: 20.8rem;
       object-fit: contain;
+      cursor: pointer;
     }
   }
 

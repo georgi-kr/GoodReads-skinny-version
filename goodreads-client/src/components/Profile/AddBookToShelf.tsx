@@ -24,12 +24,33 @@ class AddBookToShelf extends Component<AddBookToShelfProps, {}> {
   _currentShelf: Shelf = null;
   _showCurrent = true;
 
+  componentDidMount() {
+    console.log(this.props)
+    if(this.props.bookShelves && this.props.logged) {
+      this.viewChanges();
+      this.findBookOwnShelf();
+    }
+
+    }
+
   componentWillReceiveProps() {
+    console.log(this.props)
+
     if (!this.props.logged || !this.props.bookShelves) {
       return;
     }
     this.viewChanges();
     this.findBookOwnShelf();
+  }
+
+  componentDidUpdate(prevProps: any,prevState: any) {
+    console.log(this.props)
+    if (!this.props.logged || !this.props.bookShelves) {
+      return;
+    }
+    if ( prevProps !== this.props) {
+      this.findBookOwnShelf();
+    }
   }
 
   findBookOwnShelf() {
@@ -47,6 +68,7 @@ class AddBookToShelf extends Component<AddBookToShelfProps, {}> {
     if (!inShelf) {
       this._currentShelf = null;
     }
+    this.forceUpdate()
   }
 
   selectShelf(event: any) {
@@ -74,7 +96,6 @@ class AddBookToShelf extends Component<AddBookToShelfProps, {}> {
   }
 
   render() {
-    console.log(this.props.bookShelves)
     console.log('view updated')
     let options = [];
     let inList = false;
@@ -86,25 +107,25 @@ class AddBookToShelf extends Component<AddBookToShelfProps, {}> {
           inList = true;
           if(this._showCurrent) {
             options.unshift(
-              <div data-type={null} key={key} onClick={this.selectShelf.bind(this)} className="inactive">
-                Current list: {key}
-              </div>
+              <button data-type={null} key={key} onClick={this.selectShelf.bind(this)} className="selected">
+                {key}
+              </button>
             );
           }
       } else {
         options.push(
-          <div data-type={key} key={key} onClick={this.selectShelf.bind(this)}>{key}</div>
+          <button data-type={key} key={key} onClick={this.selectShelf.bind(this)}>{key}</button>
         );
       }
     }
     if (!inList) {
       options.unshift(
-        <div data-type={null} key='-1' className="inactive">Add to list</div>
+        <button data-type={null} key='-1' className="inactive add">Add to list</button>
       )
     }
     if (this._currentShelf) {
       options.push(
-        <div data-type="-1" key='0' onClick={this.selectShelf.bind(this)}>Remove from {this._currentShelf.title}</div>
+        <button data-type="-1" key='0' onClick={this.selectShelf.bind(this)}>Remove from {this._currentShelf.title}</button>
       )
     }
 
@@ -113,8 +134,8 @@ class AddBookToShelf extends Component<AddBookToShelfProps, {}> {
     }
 
     return (
-      <div className="select-container" id="select-form">
-        <div data-type="select-shelf">
+      <div className="select-container">
+        <div data-type="select-shelf" className="select-shelf">
           {options}
         </div>
       </div>

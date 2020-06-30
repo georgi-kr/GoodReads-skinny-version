@@ -11,6 +11,7 @@ import Header from './Header/Header';
 import SearchedBookResults from './Books/SearchedBookResults';
 import BookDetails from './Books/BookDetails';
 import Profile from './Profile/Profile';
+import GuardedRoute from '../shared/GuardedRoute';
 
 type AppProps = {
   isLogged: boolean
@@ -26,7 +27,7 @@ class App extends Component<AppProps, AppState> {
         <main>
           <Route exact path={PATHS.HOME} component={Landing} />
           <Route exact path={PATHS.SEARCH} component={SearchedBookResults} />
-          <Route exact path={PATHS.PROFILE} component={Profile} />
+          <GuardedRoute path={PATHS.PROFILE} component={Profile} isLogged={this.props.isLogged} />
           <Route exact path={`${PATHS.DETAILS}/:id`} component={BookDetails} />
         </main>
       </Router>
