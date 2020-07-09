@@ -27,7 +27,7 @@ a simple version of the goodreads
 
 ## Tech Stack:
 - React.js + TypeScript
-- Redux, Redux-Thunk
+- Redux, Redux-Observable
 - Google books API
 
 ## Work Log: 
