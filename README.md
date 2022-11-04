@@ -1,5 +1,5 @@
 # GoodReads-skinny-version
-a simple version of the goodreads
+a simple version of the goodreads, I crated as a part of an interview process for my first junior possition.
 
 ## Start the project:
 1. Clone or download
